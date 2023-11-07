@@ -3,6 +3,9 @@ local opt = vim.opt -- for conciseness
 -- opt.nocompataible = true
 opt.splitbelow = true
 opt.splitright = true
+opt.mouse = "a"
+-- opt.t_Co = 256
+opt.termguicolors = true
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
