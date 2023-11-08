@@ -27,6 +27,7 @@ vim.keymap.set("v", "y", "ygv<Esc>")
 vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>")
 
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+vim.keymap.set("n", "<D-t>", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
@@ -42,11 +43,20 @@ vim.keymap.set("n", "<Leader>fs", ":w<cr>")
 vim.keymap.set("n", "<D-s>", ":w<cr>")
 vim.keymap.set("i", "<D-s>", ":w<cr>")
 
--- alternative way to quit
+-- alternative way to quit and close
 vim.keymap.set("n", "<leader>qq", "ZZ")
 vim.keymap.set("n", "<C-k>", "d$")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 vim.keymap.set("n", "<leader>bk", ":bd<CR>")
+vim.keymap.set("n", "<C-w>", ":bd<CR>")
+vim.keymap.set("i", "<C-w>", ":bd<CR>")
+vim.keymap.set("i", "<D-w>", ":bd<CR>")
+vim.keymap.set("n", "<D-w>", ":bd<CR>")
+
+-- alternative way to undo
+vim.keymap.set("n", "D-z", "u")
+vim.keymap.set("i", "D-z", "<C-o>:u")
+
 -- window management
 vim.keymap.set("n", "<Leader>wd", ":close<cr>")
 vim.keymap.set("n", "<Leader>ww", "<C-w>w")
@@ -114,6 +124,18 @@ vim.keymap.set("c", "∫", "<S-Left>")
 vim.keymap.set("c", "ƒ", "<S-Right>")
 -- Meta d
 vim.keymap.set("c", "∂", "<S-Right><C-w>")
+
+-- shift is for selection
+vim.keymap.set("i", "<D-left>", "<Home>")
+vim.keymap.set("i", "<D-right>", "<End>")
+-- vim.keymap.set("i", "<D-h>", "<C-o>^")
+vim.keymap.set("i", "<D-l>", "<End>")
+vim.keymap.set("i", "<D-e>", "<End>")
+vim.keymap.set("i", "<D-a>", "<Home>")
+vim.keymap.set("i", "<D-S-left>", "<C-o>v^")
+vim.keymap.set("i", "<D-S-right>", "<C-o>v$")
+-- vim.keymap.set("i", "<D-S-h>", "<C-o>v^")
+-- vim.keymap.set("i", "<D-S-l>", "<C-o>v$")
 
 vim.keymap.set("i", "<S-up>", "<C-o>h<C-o>vgk<C-o>l")
 vim.keymap.set("i", "<S-down>", "<C-o>vgj")
