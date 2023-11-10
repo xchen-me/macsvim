@@ -20,6 +20,9 @@ vim.keymap.set("n", "C", '"_C')
 
 -- Keep cursor at the bottom of the visual selection after you yank it.
 vim.keymap.set("v", "y", "ygv<Esc>")
+-- yanking in GUI
+vim.keymap.set("v", "<D-c>", "ygv<Esc>")
+vim.keymap.set("v", "<D-x>", "ygvx<Esc>")
 
 -- directory management {{{
 -- change to the directory of the currently open file (this sets the current directory for all windows in Vim)
@@ -111,6 +114,8 @@ vim.keymap.set("i", "<C-p>", "<Up>")
 vim.keymap.set("i", "˙", "<S-Left>") -- alt h
 vim.keymap.set("i", "¬", "<S-Right>") -- alt l
 
+vim.keymap.set("n", "<C-b>", "<C-u>")
+
 vim.keymap.set("c", "<C-a>", "<Home>")
 vim.keymap.set("c", "<C-b>", "<Left>")
 vim.keymap.set("c", "<C-f>", "<Right>")
@@ -196,6 +201,10 @@ vim.keymap.set("c", "<M-BS>", "<C-w>")
 -- commandline paste
 -- https://medium.com/usevim/vim-101-pasting-into-command-line-mode-db5946a1e8a7
 vim.cmd([[cnoremap <C-y> <C-r>"]])
+vim.cmd([[cnoremap <D-v> <C-r>"]])
+vim.cmd([[nnoremap <D-v> <C-r>"]])
+vim.cmd([[inoremap <D-v> <C-r>"]])
+vim.cmd([[vnoremap <D-v> <C-r>"]])
 
 vim.cmd([[
 " press * to search for the term under the cursor or a visual selection and

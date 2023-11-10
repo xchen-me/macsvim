@@ -46,6 +46,7 @@ return {
     keymap.set("n", "<leader>hbb", "<cmd>Telescope keymaps<cr>", { desc = "Find keymaps" })
     keymap.set("n", "<leader>sr", "<cmd>Telescope registers<cr>", { desc = "Find registers" })
     keymap.set("n", "<leader>:", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+    keymap.set("n", "<leader>:", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set("n", "<leader>cr", "<cmd>Telescope command_history<cr>", { desc = "Find command history" })
     keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help_tags" })
     keymap.set(
