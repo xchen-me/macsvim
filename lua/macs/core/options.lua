@@ -59,4 +59,10 @@ vim.cmd([[
 set whichwrap+=b,h,l,<,>,[,]
 set noswapfile
 set formatoptions-=cro       " Stop newline continution of comments
+
+" goto file folder after opening it
+augroup cdpwd
+    autocmd!
+    autocmd VimEnter * cd $PWD
+augroup END
 ]])

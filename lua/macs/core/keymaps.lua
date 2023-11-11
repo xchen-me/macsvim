@@ -49,6 +49,7 @@ vim.keymap.set("i", "<D-s>", ":w<cr>")
 -- alternative way to quit and close
 vim.keymap.set("n", "<leader>qq", "ZZ")
 vim.keymap.set("n", "<C-k>", "d$")
+vim.keymap.set("n", "D", "d$")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 vim.keymap.set("n", "<leader>bk", ":bd<CR>")
 vim.keymap.set("n", "<C-w>", ":bd<CR>")
@@ -188,7 +189,7 @@ vim.cmd([[
 
   noremap <D-left> ^
   noremap <D-right> $
-  noremap <C-a> ^
+  " noremap <C-a> ^
   " noremap <C-e> $
   noremap <D-S-left> v^
   noremap <D-S-right> v$
