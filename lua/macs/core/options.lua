@@ -57,12 +57,14 @@ opt.autoread = true
 
 vim.cmd([[
 set whichwrap+=b,h,l,<,>,[,]
-set noswapfile
 set formatoptions-=cro       " Stop newline continution of comments
+set noswapfile
 
 " goto file folder after opening it
 augroup cdpwd
     autocmd!
-    autocmd VimEnter * cd $PWD
+    autocmd BufWinEnter * cd %:p:h
+    " autocmd BufReadPre * cd %:p:h
+    " autocmd VimEnter * cd %:p:h
 augroup END
 ]])
