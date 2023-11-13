@@ -75,7 +75,10 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally"
 vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
-vim.keymap.set("n", "<Leader>oo", ":!open .<cr>")
+vim.keymap.set("n", "<Leader>oo", ":silent !open .<cr>", { desc = "Open current folder in Finder" })
+vim.keymap.set("n", "<Leader>oe", ":silent !open %<cr>", { desc = "Open current file in default app" })
+vim.keymap.set("n", "<Leader>ol", ":silent !open -a LaunchBar %<cr>", { desc = "Send current file to LaunchBar" })
+vim.keymap.set("n", "<Leader>oL", ":silent !open -a LaunchBar .<cr>", { desc = "Send current folder to LaunchBar" })
 
 vim.keymap.set("n", "<C-TAB>", ":bnext<cr>")
 vim.keymap.set("n", "<leader>bn", ":bnext<cr>")
