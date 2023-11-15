@@ -58,8 +58,8 @@ vim.keymap.set("i", "<D-w>", ":bd<CR>")
 vim.keymap.set("n", "<D-w>", ":bd<CR>")
 
 -- alternative way to undo
-vim.keymap.set("n", "D-z", "u")
-vim.keymap.set("i", "D-z", "<C-o>:u")
+vim.keymap.set("n", "<D-z>", "u")
+vim.keymap.set("i", "<D-z>", "<C-o>u")
 
 -- window management
 vim.keymap.set("n", "<Leader>wd", ":close<cr>")
