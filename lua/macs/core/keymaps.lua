@@ -206,8 +206,10 @@ vim.keymap.set("c", "<M-BS>", "<C-w>")
 -- commandline paste
 -- https://medium.com/usevim/vim-101-pasting-into-command-line-mode-db5946a1e8a7
 vim.cmd([[cnoremap <C-y> <C-r>"]])
+
+-- GNU paste
 vim.cmd([[cnoremap <D-v> <C-r>"]])
-vim.cmd([[nnoremap <D-v> <C-r>"]])
+vim.keymap.set("n", "<D-v>", "p")
 vim.cmd([[inoremap <D-v> <C-r>"]])
 vim.cmd([[vnoremap <D-v> <C-r>"]])
 
