@@ -22,6 +22,7 @@ vim.keymap.set("n", "C", '"_C')
 vim.keymap.set("v", "y", "ygv<Esc>")
 -- yanking in GUI
 vim.keymap.set("v", "<D-c>", "ygv<Esc>")
+vim.keymap.set("n", "<D-c>", "ygv<Esc>")
 vim.keymap.set("v", "<D-x>", "ygvx<Esc>")
 
 -- directory management {{{
@@ -227,3 +228,11 @@ xnoremap <D-r> :s///gc<Left><Left><Left>
 nnoremap <silent> c* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> c* "sy:let @/=@s<CR>cgn
 ]])
+
+-- markdown
+vim.keymap.set("n", "<leader>mi", "I- <Esc>")
+vim.keymap.set("v", "<leader>mi", "I- <Esc>")
+vim.keymap.set("n", "<leader>mh", "I## <Esc>")
+vim.keymap.set("n", "<leader>1", "I# <Esc>")
+vim.keymap.set("n", "<leader>2", "I## <Esc>")
+vim.keymap.set("n", "<leader>3", "I### <Esc>")
