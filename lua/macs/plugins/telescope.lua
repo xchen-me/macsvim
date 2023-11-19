@@ -41,9 +41,27 @@ return {
     )
     keymap.set(
       "n",
+      "<leader>sN",
+      "<cmd>cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian-notes<CR>:Telescope live_grep<cr>",
+      { desc = "Fuzzy find string in my markdown notes" }
+    )
+    keymap.set(
+      "n",
+      "<leader>nF",
+      "<cmd>cd ~/mNotes<CR>:Telescope live_grep<cr>",
+      { desc = "Fuzzy find string in my org notes" }
+    )
+    keymap.set(
+      "n",
+      "<leader>sn",
+      "<cmd>cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian-notes<CR>:Telescope find_files<cr>",
+      { desc = "Fuzzy find files in my markdown notes" }
+    )
+    keymap.set(
+      "n",
       "<leader>nf",
       "<cmd>cd ~/mNotes<CR>:Telescope find_files<cr>",
-      { desc = "Fuzzy find files in my notes" }
+      { desc = "Fuzzy find files in my org notes" }
     )
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
