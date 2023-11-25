@@ -1,4 +1,4 @@
--- set leader key to space
+-- set leader key to spaceC-g
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -8,6 +8,8 @@ vim.g.maplocalleader = " "
 -- use jk to exit insert and command modes
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 vim.keymap.set("c", "jk", "<C-c>", { desc = "Exit command mode with jk" })
+vim.keymap.set("i", "<C-g>", "<ESC>", { desc = "Exit command mode with C-g" })
+vim.keymap.set("c", "<C-g>", "<C-c>", { desc = "Exit command mode with C-g" })
 
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
