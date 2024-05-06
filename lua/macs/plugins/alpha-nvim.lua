@@ -19,8 +19,20 @@ return {
     -- Set menu
     dashboard.section.buttons.val = {
       dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-      dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+      dashboard.button("SPC op", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
       dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+      dashboard.button("SPC nf", "󰱼 > Find File in Org Notes", "<cmd>cd ~/mNotes<CR>:Telescope find_files<CR>"),
+      dashboard.button("SPC nF", "󰱼 > Grep in Org Notes", "<cmd>cd ~/mNotes<CR>:Telescope live_grep<cr>"),
+      dashboard.button(
+        "SPC sn",
+        "󰱼 > Find File in Markdown Notes",
+        "<cmd>cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian-notes<CR>:Telescope find_files<cr>"
+      ),
+      dashboard.button(
+        "SPC sN",
+        "󰱼 > Grep in Markdown Notes",
+        "<cmd>cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian-notes<CR>:Telescope live_grep<cr>"
+      ),
       dashboard.button("SPC fr", "󰱼 > Find Recent File", "<cmd>Telescope oldfiles<CR>"),
       dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
       dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
