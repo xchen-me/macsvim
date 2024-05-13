@@ -62,7 +62,7 @@ return {
     keymap.set("n", "<leader>tt", "<cmd>Telescope<cr>", { desc = "Run Telescope" })
     keymap.set("n", "<leader>fF", "<cmd>Telescope file_browser path=%:p:h<cr>", { desc = "Fuzzy find files in cwd" })
     -- keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>ff", "<cmd>Telescope file_browser<cr>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set(
       "n",
       "<leader>fp",
@@ -98,9 +98,14 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string" })
-    keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
-    -- keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
-    keymap.set("n", "<leader>bf", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+    keymap.set(
+      "n",
+      "<leader>sb",
+      "<cmd>cd %:p:h<CR>:pwd<CR>:Telescope current_buffer_fuzzy_find<cr>",
+      { desc = "Find in current buffer" }
+    )
+    keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+    keymap.set("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     keymap.set("n", "<leader><", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     keymap.set("n", "<leader>sg", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
     keymap.set("n", "<leader><leader>", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
@@ -113,6 +118,7 @@ return {
     keymap.set("n", "<leader>:", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set("n", "<leader>sc", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set({ "n", "i", "v" }, "≈", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+    keymap.set({ "n", "i", "v" }, "<M-x>", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set("n", "<leader>cr", "<cmd>Telescope command_history<cr>", { desc = "Find command history" })
     keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help_tags" })
     keymap.set("n", "<leader>nt", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })

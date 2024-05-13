@@ -33,7 +33,9 @@ vim.keymap.set("v", "<D-x>", "ygvx<Esc>")
 vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>")
 
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-vim.keymap.set("n", "<D-t>", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+if vim.fn.has("gui_running") then
+  vim.keymap.set("n", "<D-t>", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+end
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
@@ -42,27 +44,38 @@ vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current bu
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Explore, { desc = "Open NetRW" })
 
+vim.keymap.set("n", "<C-s>", "/")
+vim.keymap.set("i", "<C-s>", "<Esc>/")
 -- alternative ways to save
-vim.keymap.set("n", "<C-s>", ":w<cr>")
-vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>i")
 vim.keymap.set("n", "<Leader>fs", ":w<cr>")
-vim.keymap.set("n", "<D-s>", ":w<cr>")
-vim.keymap.set("i", "<D-s>", ":w<cr>")
+if vim.fn.has("gui_running") then
+  vim.keymap.set("n", "<D-s>", ":w<cr>")
+  vim.keymap.set("i", "<D-s>", ":w<cr>")
+end
 
 -- alternative way to quit and close
 vim.keymap.set("n", "<leader>qq", "ZZ")
 vim.keymap.set("n", "<C-k>", "d$")
 vim.keymap.set("n", "D", "d$")
+vim.keymap.set("n", "<leader>bs", ":w<CR>")
+vim.keymap.set("n", "<leader>fs", ":w<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 vim.keymap.set("n", "<leader>bk", ":bd<CR>")
--- vim.keymap.set("n", "<C-w>", ":bd<CR>")
--- vim.keymap.set("i", "<C-w>", ":bd<CR>")
-vim.keymap.set("i", "<D-w>", ":bd<CR>")
-vim.keymap.set("n", "<D-w>", ":bd<CR>")
+vim.keymap.set("n", "<leader>bK", ":bufdo bwipeout<CR>")
+if vim.fn.has("gui_running") then
+  vim.keymap.set("i", "<D-w>", ":bd<CR>")
+  vim.keymap.set("n", "<D-w>", ":bd<CR>")
+end
 
--- alternative way to undo
-vim.keymap.set("n", "<D-z>", "u")
-vim.keymap.set("i", "<D-z>", "<C-o>u")
+if vim.fn.has("gui_running") then
+  -- alternative way to undo
+  vim.keymap.set("n", "<D-z>", "u")
+  vim.keymap.set("i", "<D-z>", "<C-o>u")
+end
+
+-- quickly insert empty liens below and above
+vim.keymap.set("n", "]<Leader>", "o<Esc>k")
+vim.keymap.set("n", "[<Leader>", "O<Esc>j")
 
 -- window management
 vim.keymap.set("n", "<Leader>wd", ":close<cr>")
@@ -137,24 +150,28 @@ vim.keymap.set("c", "ƒ", "<S-Right>")
 -- Meta d
 vim.keymap.set("c", "∂", "<S-Right><C-w>")
 
--- shift is for selection
-vim.keymap.set("i", "<D-left>", "<Home>")
-vim.keymap.set("i", "<D-right>", "<End>")
--- vim.keymap.set("i", "<D-h>", "<C-o>^")
-vim.keymap.set("i", "<D-l>", "<End>")
-vim.keymap.set("i", "<D-e>", "<End>")
-vim.keymap.set("i", "<D-a>", "<Home>")
-vim.keymap.set("i", "<D-S-left>", "<C-o>v^")
-vim.keymap.set("i", "<D-S-right>", "<C-o>v$")
--- vim.keymap.set("i", "<D-S-h>", "<C-o>v^")
--- vim.keymap.set("i", "<D-S-l>", "<C-o>v$")
+if vim.fn.has("gui_running") then
+  -- shift is for selection
+  vim.keymap.set("i", "<D-left>", "<Home>")
+  vim.keymap.set("i", "<D-right>", "<End>")
+  -- vim.keymap.set("i", "<D-h>", "<C-o>^")
+  vim.keymap.set("i", "<D-l>", "<End>")
+  vim.keymap.set("i", "<D-e>", "<End>")
+  vim.keymap.set("i", "<D-a>", "<Home>")
+  vim.keymap.set("i", "<D-S-left>", "<C-o>v^")
+  vim.keymap.set("i", "<D-S-right>", "<C-o>v$")
+  -- vim.keymap.set("i", "<D-S-h>", "<C-o>v^")
+  -- vim.keymap.set("i", "<D-S-l>", "<C-o>v$")
+end
 
 vim.keymap.set("i", "<S-up>", "<C-o>h<C-o>vgk<C-o>l")
 vim.keymap.set("i", "<S-down>", "<C-o>vgj")
 vim.keymap.set("i", "<S-M-up>", "<C-o>h<C-o>vgk<C-o>l")
 vim.keymap.set("i", "<S-M-down>", "<C-o>vgj")
-vim.keymap.set("i", "<S-D-up>", "<C-o>h<C-o>vgk<C-o>l")
-vim.keymap.set("i", "<S-D-down>", "<C-o>vgj")
+if vim.fn.has("gui_running") then
+  vim.keymap.set("i", "<S-D-up>", "<C-o>h<C-o>vgk<C-o>l")
+  vim.keymap.set("i", "<S-D-down>", "<C-o>vgj")
+end
 vim.keymap.set("i", "<S-left>", "<C-o>h<C-o>v")
 vim.keymap.set("i", "<S-right>", "<C-o>vl")
 vim.cmd([[
@@ -165,20 +182,22 @@ vim.cmd([[
   vmap <S-Up> k
   vmap <S-M-Down> j
   vmap <S-M-Up> k
-  vmap <S-D-down> j
-  vmap <S-D-up> k
-  vmap <S-D-j> j
   vmap <M-l> e
   vmap <M-h> b
-  vmap <S-D-k> k
   vmap <S-M-right> e
   vmap <S-M-left> b
-  vmap <S-D-right> $
-  vmap <S-D-left> ^
-  vmap <S-D-l> $
-  vmap <S-D-h> ^
   vmap <S-l> $
   vmap <S-h> ^
+  if has("gui_running")
+    vmap <S-D-down> j
+    vmap <S-D-up> k
+    vmap <S-D-j> j
+    vmap <S-D-k> k
+    vmap <S-D-right> $
+    vmap <S-D-left> ^
+    vmap <S-D-l> $
+    vmap <S-D-h> ^
+  endif
   " option shift h/l
   vmap Ó b
   vmap Ò w
@@ -193,14 +212,16 @@ vim.cmd([[
   nmap <S-M-right> vl
   nmap <S-M-left> vh
 
-  noremap <D-left> ^
-  noremap <D-right> $
-  " noremap <C-a> ^
-  " noremap <C-e> $
-  noremap <D-S-left> v^
-  noremap <D-S-right> v$
-  noremap <D-S-h> v^
-  noremap <D-S-l> v$
+  if has("gui_running")
+    noremap <D-left> ^
+    noremap <D-right> $
+    " noremap <C-a> ^
+    " noremap <C-e> $
+    noremap <D-S-left> v^
+    noremap <D-S-right> v$
+    noremap <D-S-h> v^
+    noremap <D-S-l> v$
+  endif
   ]])
 
 -- Meta Backspace deletes backward a word
@@ -221,12 +242,14 @@ vim.cmd([[
 " note it must be Leader instead of leader for correct binding of \rc
 " nnoremap <Leader>r :%s///gc<Left><Left>
 nnoremap <Leader>r :%s///gc<Left><Left><Left>
-" mac comand+r to replace and confirm
-nnoremap <D-r> :%s///gc<left><left><left>
 " same as above but acting strictly on visual selection
 xnoremap <Leader>r :s///gc<Left><Left><Left>
-" mac comand+r to replace and confirm
-xnoremap <D-r> :s///gc<Left><Left><Left>
+if has("gui_running") 
+  " mac comand+r to replace and confirm
+  nnoremap <D-r> :%s///gc<left><left><left>
+  " mac comand+r to replace and confirm
+  xnoremap <D-r> :s///gc<Left><Left><Left>
+endif
 " type a replacement term and press . to repeat the replacement again. useful
 " for replacing a few instances of the term.
 nnoremap <silent> c* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
