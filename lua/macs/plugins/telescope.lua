@@ -60,12 +60,13 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     keymap.set("n", "<leader>tt", "<cmd>Telescope<cr>", { desc = "Run Telescope" })
-    keymap.set("n", "<leader>fF", "<cmd>Telescope file_browser path=%:p:h<cr>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>ff", "<cmd>Telescope file_browser path=%:p:h<cr>", { desc = "Fuzzy find files in cwd" })
     -- keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser path=%:p:h<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>fF", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set(
       "n",
       "<leader>fp",
+      -- "<cmd>cd ~/.config/nvim<CR>:Telescope file_browser<cr>",
       "<cmd>cd ~/.config/nvim<CR>:Telescope find_files<cr>",
       { desc = "Fuzzy find files in private nvim configuration" }
     )
@@ -95,7 +96,6 @@ return {
     )
     -- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string" })
     keymap.set(
@@ -108,6 +108,7 @@ return {
     keymap.set("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     keymap.set("n", "<leader><", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     keymap.set("n", "<leader>sg", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
+    keymap.set("n", "<leader>sp", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
     keymap.set("n", "<leader><leader>", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
     keymap.set("n", "<leader>sm", "<cmd>Telescope marks<cr>", { desc = "Find marks" })
     keymap.set("n", "<leader>st", "<cmd>Telescope treesitter<cr>", { desc = "Find treesitter files" })

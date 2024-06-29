@@ -20,7 +20,18 @@ return {
     -- Setup orgmode
     require("orgmode").setup({
       -- org_agenda_files = '~/orgfiles/**/*',
-      -- org_default_notes_file = '~/orgfiles/refile.org',
+      -- org_agenda_files = { "~/mNotes/*.org", "~/mNotes/mobile-sync/*.org" },
+      org_agenda_files = { "~/mNotes/mobile-sync/*.org" },
+      org_default_notes_file = "~/mNotes/notes.org",
+      mappings = {
+        global = {
+          org_agenda = { "<Leader>oA", "<Leader>oa" },
+          org_capture = { "<Leader>X", "<Leader>nn", "<Leader>oc" },
+        },
+        org = {
+          org_toggle_heading = { "<Leader>mh", "<Leader>o*" },
+        },
+      },
     })
   end,
 }

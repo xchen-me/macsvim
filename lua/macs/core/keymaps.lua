@@ -20,12 +20,19 @@ vim.keymap.set("n", "X", '"_X')
 vim.keymap.set("n", "c", '"_c')
 vim.keymap.set("n", "C", '"_C')
 
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+vim.keymap.set("n", "J", "gJ")
+vim.keymap.set("n", "gJ", "J")
+
 -- Keep cursor at the bottom of the visual selection after you yank it.
 vim.keymap.set("v", "y", "ygv<Esc>")
--- yanking in GUI
-vim.keymap.set("v", "<D-c>", "ygv<Esc>")
-vim.keymap.set("n", "<D-c>", "ygv<Esc>")
-vim.keymap.set("v", "<D-x>", "ygvx<Esc>")
+if vim.fn.has("gui_running") then
+  -- yanking in GUI
+  vim.keymap.set("v", "<D-c>", "ygv<Esc>")
+  vim.keymap.set("n", "<D-c>", "ygv<Esc>")
+  vim.keymap.set("v", "<D-x>", "ygvx<Esc>")
+end
 
 -- directory management {{{
 -- change to the directory of the currently open file (this sets the current directory for all windows in Vim)
@@ -230,11 +237,13 @@ vim.keymap.set("c", "<M-BS>", "<C-w>")
 -- https://medium.com/usevim/vim-101-pasting-into-command-line-mode-db5946a1e8a7
 vim.cmd([[cnoremap <C-y> <C-r>"]])
 
--- GNU paste
-vim.cmd([[cnoremap <D-v> <C-r>"]])
-vim.keymap.set("n", "<D-v>", "p")
-vim.cmd([[inoremap <D-v> <C-r>"]])
-vim.cmd([[vnoremap <D-v> <C-r>"]])
+if vim.fn.has("gui_running") then
+  -- GNU paste
+  vim.cmd([[cnoremap <D-v> <C-r>"]])
+  vim.keymap.set("n", "<D-v>", "p")
+  vim.cmd([[inoremap <D-v> <C-r>"]])
+  vim.cmd([[vnoremap <D-v> <C-r>"]])
+end
 
 vim.cmd([[
 " press * to search for the term under the cursor or a visual selection and
@@ -256,10 +265,10 @@ nnoremap <silent> c* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> c* "sy:let @/=@s<CR>cgn
 ]])
 
--- markdown
+-- markdown and orgmode
 vim.keymap.set("n", "<leader>mi", "I- <Esc>")
 vim.keymap.set("v", "<leader>mi", "I- <Esc>")
-vim.keymap.set("n", "<leader>mh", "I## <Esc>")
-vim.keymap.set("n", "<leader>1", "I# <Esc>")
-vim.keymap.set("n", "<leader>2", "I## <Esc>")
-vim.keymap.set("n", "<leader>3", "I### <Esc>")
+-- vim.keymap.set("n", "<leader>mh", "I## <Esc>")
+-- vim.keymap.set("n", "<leader>1", "I# <Esc>")
+-- vim.keymap.set("n", "<leader>2", "I## <Esc>")
+-- vim.keymap.set("n", "<leader>3", "I### <Esc>")
