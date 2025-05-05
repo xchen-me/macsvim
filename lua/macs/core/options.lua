@@ -55,6 +55,8 @@ opt.laststatus = 2
 opt.autowrite = true
 opt.autoread = true
 
+opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 vim.cmd([[
 set whichwrap+=b,h,l,<,>,[,]
 set formatoptions-=cro       " Stop newline continution of comments

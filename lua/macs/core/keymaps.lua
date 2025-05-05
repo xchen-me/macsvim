@@ -124,7 +124,9 @@ vim.keymap.set("i", "<C-b>", "<Left>")
 vim.keymap.set("i", "<C-f>", "<Right>")
 vim.keymap.set("i", "<C-e>", "<End>")
 vim.keymap.set("i", "<C-d>", "<Delete>")
-vim.keymap.set("i", "<C-k>", "<Esc>ld$a")
+vim.keymap.set("i", "<C-k>", "<C-O>D")
+vim.keymap.set("i", "<˚>", "<C-O>D")
+-- vim.keymap.set("i", "<C-k>", "<Esc>ld$a")
 -- Meta b
 vim.keymap.set("i", "∫", "<S-Left>")
 -- Meta f
@@ -148,7 +150,11 @@ vim.keymap.set("c", "<C-b>", "<Left>")
 vim.keymap.set("c", "<C-f>", "<Right>")
 vim.keymap.set("c", "<C-e>", "<End>")
 vim.keymap.set("c", "<C-d>", "<Delete>")
-vim.keymap.set("c", "<C-k>", "<Esc>ld$a")
+-- vim.keymap.set("c", "<C-k>", "<C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>")
+-- vim.keymap.set("c", "<C-k>", "<Esc>ld$a")
+vim.cmd([[
+  cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
+]])
 
 -- Meta b
 vim.keymap.set("c", "∫", "<S-Left>")

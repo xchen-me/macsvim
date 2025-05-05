@@ -38,7 +38,7 @@ return {
           "markdown",
           "markdown_inline",
           "matlab",
-          "org",
+          -- "org",
           "python",
           "yaml",
           "vim",
