@@ -119,9 +119,11 @@ return {
     keymap.set("n", "<leader>:", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set("n", "<leader>sc", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set({ "n", "i", "v" }, "<C-;>", "<cmd>Telescope spell_suggest<cr>", { desc = "Spell suggest" })
-    keymap.set({ "n", "i", "v" }, "≈", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
-    keymap.set({ "n", "i", "v" }, "<D-o>", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
     keymap.set({ "n", "i", "v" }, "<M-x>", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+    if vim.fn.has("gui_running") then
+      keymap.set({ "n", "i", "v" }, "≈", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+      keymap.set({ "n", "i", "v" }, "<D-o>", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+    end
     keymap.set("n", "<leader>cr", "<cmd>Telescope command_history<cr>", { desc = "Find command history" })
     keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help_tags" })
     keymap.set("n", "<leader>nt", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })

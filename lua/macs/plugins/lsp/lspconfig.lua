@@ -1,16 +1,16 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-  },
+  -- dependencies = {
+  --   "hrsh7th/cmp-nvim-lsp",
+  --   { "antosha417/nvim-lsp-file-operations", config = true },
+  -- },
   config = function()
     -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
+    -- local lspconfig = require("lspconfig")
 
     -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap -- for conciseness
 
@@ -18,9 +18,12 @@ return {
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
 
+      -- addressing conflicts with https://github.com/inkarkat/vim-ReplaceWithRegister
+      vim.keymap.del("n", "gra")
+      vim.keymap.del("n", "gri")
       -- set keybinds
-      opts.desc = "Show LSP references"
-      keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+      -- opts.desc = "Show LSP references"
+      -- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
       opts.desc = "Show LSP references"
       keymap.set("n", "<leader>cD", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -68,7 +71,7 @@ return {
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
@@ -79,7 +82,7 @@ return {
     -- end
 
     -- configure html server
-    vim.lsp.enable('html')
+    -- vim.lsp.enable('html')
     -- lspconfig["html"].setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach,
@@ -141,17 +144,17 @@ return {
     --   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     -- })
 
-    vim.lsp.enable('vim')
+    -- vim.lsp.enable('vim')
 
     -- configure python server
-    vim.lsp.enable('pyright')
+    -- vim.lsp.enable('pyright')
     -- lspconfig["pyright"].setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach,
     -- })
 
     -- configure lua server (with special settings)
-    vim.lsp.enable('lua_ls')
+    -- vim.lsp.enable('lua_ls')
     -- lspconfig["lua_ls"].setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach,

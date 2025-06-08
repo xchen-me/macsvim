@@ -5,7 +5,10 @@ return {
   init = function()
     vim.g.mkdp_filetypes = { "markdown" }
   end,
+  -- "iamcco/markdown-preview.nvim",
+  -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   ft = { "markdown" },
+  build = function() vim.fn["mkdp#util#install"]() end,
   -- event = "VeryLazy",
   config = function()
     vim.keymap.set("n", "<Leader>mv", "<Plug>MarkdownPreview", { desc = "Markdown Preview" })

@@ -56,6 +56,7 @@ opt.autowrite = true
 opt.autoread = true
 
 opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.conceallevel = 1
 
 vim.cmd([[
 set whichwrap+=b,h,l,<,>,[,]

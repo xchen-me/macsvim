@@ -17,8 +17,8 @@ vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights
 -- delete single character without copying into register
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "X", '"_X')
-vim.keymap.set("n", "c", '"_c')
-vim.keymap.set("n", "C", '"_C')
+-- vim.keymap.set("n", "c", '"_c')
+-- vim.keymap.set("n", "C", '"_C')
 
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
@@ -245,10 +245,10 @@ vim.cmd([[cnoremap <C-y> <C-r>"]])
 
 if vim.fn.has("gui_running") then
   -- GNU paste
-  vim.cmd([[cnoremap <D-v> <C-r>"]])
+  vim.cmd([[cnoremap <D-v> <C-r>+]])
   vim.keymap.set("n", "<D-v>", "p")
-  vim.cmd([[inoremap <D-v> <C-r>"]])
-  vim.cmd([[vnoremap <D-v> <C-r>"]])
+  vim.cmd([[inoremap <D-v> <C-r>+]])
+  vim.cmd([[vnoremap <D-v> <C-r>+]])
 end
 
 vim.cmd([[
