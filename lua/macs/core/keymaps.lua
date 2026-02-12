@@ -98,10 +98,49 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally"
 vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
-vim.keymap.set("n", "<Leader>oo", ":silent !open .<cr>", { desc = "Open current folder in Finder" })
+
+-- reveal file in Finder
+vim.keymap.set("n", "<Leader>oo", function()
+  local path = vim.fn.expand("%:p")
+  vim.cmd("silent !open -R " .. vim.fn.shellescape(path))
+end, { desc = "Reveal current file in Finder" })
+-- open current folder in Finder
+vim.keymap.set("n", "<Leader>oO", ":silent !open '%:p:h'<cr>", { desc = "Open current folder in Finder" })
+-- vim.keymap.set("n", "<Leader>oo", ":silent !open .<cr>", { desc = "Open current folder in Finder" })
+
 vim.keymap.set("n", "<Leader>oe", ":silent !open %<cr>", { desc = "Open current file in default app" })
-vim.keymap.set("n", "<Leader>ol", ":silent !open -a LaunchBar %<cr>", { desc = "Send current file to LaunchBar" })
-vim.keymap.set("n", "<Leader>oL", ":silent !open -a LaunchBar .<cr>", { desc = "Send current folder to LaunchBar" })
+
+vim.keymap.set("n", "<Leader>osL", ":silent !open -a LaunchBar .<cr>", { desc = "Send current folder to LaunchBar" })
+vim.keymap.set("n", "<Leader>osl", ":silent !open -a LaunchBar %<cr>", { desc = "Send current file to LaunchBar" })
+
+-- Send current folder to Alfred
+vim.keymap.set("n", "<Leader>osA", ":silent !osascript -e 'tell application \"Alfred 5\" to action \"'\"%:p:h\"'\"'<cr>", { desc = "Send current folder to Alfred" })
+
+-- Send current file to Alfred
+vim.keymap.set("n", "<Leader>osa", function()
+    local file_path = vim.fn.expand("%:p")
+    if file_path == "" then
+        print("Buffer has no file path.")
+        return
+    end
+    vim.cmd("silent !osascript -e 'tell application \"Alfred 5\" to action \"" .. file_path .. "\"'")
+end, { desc = "Send current file to Alfred" })
+-- Send selection to Alfred search
+vim.keymap.set("v", "<Leader>osa", function()
+    -- Yank visual selection to the 'v' register
+    vim.cmd('noau normal! "vy')
+    local text = vim.fn.getreg("v")
+
+    -- Basic cleanup: escape double quotes and remove newlines for the search bar
+    text = text:gsub('"', '\\"'):gsub('\n', ' '):gsub('\r', '')
+
+    -- Trigger Alfred search
+    local cmd = string.format("osascript -e 'tell application \"Alfred 5\" to search \"%s\"'", text)
+    vim.fn.system(cmd)
+    
+    -- Optional: Return to normal mode
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+end, { desc = "Send selection to Alfred search" })
 
 vim.keymap.set("n", "<C-TAB>", ":bnext<cr>")
 vim.keymap.set("n", "<leader>bn", ":bnext<cr>")
@@ -272,8 +311,10 @@ xnoremap <silent> c* "sy:let @/=@s<CR>cgn
 ]])
 
 -- markdown and orgmode
-vim.keymap.set("n", "<leader>mi", "I- <Esc>")
-vim.keymap.set("v", "<leader>mi", "I- <Esc>")
+vim.keymap.set("n", "<leader>mhi", "I- <Esc>")
+vim.keymap.set("v", "<leader>mhi", "I- <Esc>")
+vim.keymap.set("n", "<leader>mht", "I- [ ] <Esc>")
+vim.keymap.set("v", "<leader>mht", "I- [ ] <Esc>")
 -- vim.keymap.set("n", "<leader>mh", "I## <Esc>")
 -- vim.keymap.set("n", "<leader>1", "I# <Esc>")
 -- vim.keymap.set("n", "<leader>2", "I## <Esc>")
